@@ -1,0 +1,44 @@
+@import '../index.sass'
+
+.title
+  font-size: 1.2em
+  display: block
+  text-align: left
+  margin: 25px 0 15px 15px
+  color: $primary
+
+.datepicket
+  display: flex
+  flex-wrap: nowrap
+  overflow: hidden
+  overflow-x: scroll
+  border-top: 2px solid $light-grey
+  border-bottom: 2px solid $light-grey
+
+.datepicket_date
+  padding: 25px
+
+.datepicket_date_week
+  color: $grey
+  margin-bottom: 15px
+
+
+[class |= datepicket_date_day]
+  margin: 10px 0
+  height: 35px
+  width: 35px
+  display: flex
+  justify-content: center
+  align-items: center
+  background: $light-grey
+  color: $white
+  border-radius: 50%
+  transition: all ease 0.3s
+
+.datepicket_date_day--selected
+  background: $primary
+  transition: all ease 0.3s
+
+.datepicket_date_month
+  font-weight: 300
+  color: black

@@ -1,0 +1,27 @@
+@import '../index.sass'
+
+.location_title
+  display: block
+  text-align: left
+  margin: 20px 0 15px 15px
+  color: $primary
+
+.location
+  height: 12vh
+  background: $white-grey
+  border-top: 2px solid $light-grey
+  border-bottom: 2px solid $light-grey
+  display: flex
+  justify-content: center
+  align-items: center
+  color: $grey
+  font-weight: 300
+  cursor: pointer
+
+  &:active
+    background: $primary
+    color: $white
+
+.location_span
+  margin-left: 8px
+  transform: rotate(-45deg)
