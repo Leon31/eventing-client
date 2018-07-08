@@ -12,10 +12,12 @@ class CatogoriesList extends Component {
   }
 
   hendleInput = (e) => {
-    if(e.key === ','){
+    if(e.key === ',' || e.key === 'Enter'){
       this.setState({
         inputString: '',
-        catString: this.state.catString + e.key
+        catString: this.state.catString + ','
+      }, ()=>{
+        this.props.storeCategories(this.state.catString.split(',').slice(0, -1), 'categories'); 
       });
     } else if(e.key === 'Backspace'){
       if (this.state.inputString === ''){
@@ -28,7 +30,7 @@ class CatogoriesList extends Component {
           catString: this.state.catString.slice(0, -1)
         });
       }
-    } else {
+    } else if (e.key.length <= 1) {
       this.setState({
         inputString: this.state.inputString + e.key,
         catString: this.state.catString + e.key
@@ -38,7 +40,6 @@ class CatogoriesList extends Component {
 
   renderCategories = () => {
     const cats = this.state.catString.split(',');
-    console.log(cats.length-1);
     return (
       <div className="categorieslist_container">
         {cats.map((tag,i) => {

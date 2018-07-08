@@ -24,6 +24,12 @@ class DatePicker extends Component {
   selectDay = (i, date) => {
     this.setState({
       week: {...this.state.week, [i]: !this.state.week[i]}
+    },() => {
+      const dates = Object.keys(this.state.week).filter(day => this.state.week[day]);
+      dates.forEach((el, i) => {
+        dates[i] = moment().add(el,'days').format('YYYY-M-D');
+      });
+      this.props.storeDates(dates, 'dates');
     });
   }
   // moment().add(i,'days').format('YYYY-M-D')

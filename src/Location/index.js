@@ -21,12 +21,12 @@ class Location extends Component {
 
   getLocation = () => {
     if (!this.state.position) {
-      navigator.geolocation.getCurrentPosition((pos) => {
+      navigator.geolocation.getCurrentPosition(({coords}) => {
         this.setState({
-          position: pos,
+          position: coords,
           text: 'Now we will track you for life',
         });
-        this.props.storeLocation(pos);
+        this.props.storeLocation({lng: coords.longitude, lat: coords.latitude}, 'location');
       });
     } else {
       this.setState({ text: posText[Math.floor((Math.random() * 6))],});
