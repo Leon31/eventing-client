@@ -12,31 +12,38 @@ class CatogoriesList extends Component {
   }
 
   hendleInput = (e) => {
+    const { inputString, catString } = this.state;
     if(e.key === ',' || e.key === 'Enter'){
       this.setState({
         inputString: '',
-        catString: this.state.catString + ','
-      }, ()=>{
-        this.props.storeCategories(this.state.catString.split(',').slice(0, -1), 'categories'); 
-      });
+        catString: catString + ','
+      },()=>this.createArray(this.state.catString));
     } else if(e.key === 'Backspace'){
-      if (this.state.inputString === ''){
+      if (inputString === ''){
+        const cats = catString.split(',').slice(0, -1);
         this.setState({
-          catString: this.state.catString.split(',').slice(0, -1).join(',')
-        });
+          inputString: cats.length ? cats[cats.length-1] : [],
+          catString: cats.join(',')
+        },()=>this.createArray(this.state.catString));
       } else {
         this.setState({
-          inputString: this.state.inputString.slice(0, -1),
-          catString: this.state.catString.slice(0, -1)
+          inputString: inputString.slice(0, -1),
+          catString: catString.slice(0, -1)
         });
       }
-    } else if (e.key.length <= 1) {
+    } else if (e.key.length <= 1 && inputString.length <= 30) {
       this.setState({
-        inputString: this.state.inputString + e.key,
-        catString: this.state.catString + e.key
+        inputString: inputString + e.key,
+        catString: catString + e.key
       });
     }
   }
+
+  createArray = (catString) => {
+    const arrayOfCats = catString.split(',').slice(0, -1);
+    this.props.storeCategories(arrayOfCats, 'categories');
+  }
+
 
   renderCategories = () => {
     const cats = this.state.catString.split(',');

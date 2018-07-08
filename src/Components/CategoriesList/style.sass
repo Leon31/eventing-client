@@ -1,4 +1,4 @@
-@import '../index.sass'
+@import '../../index.sass'
 
 .categorieslist
   text-align: left
@@ -6,19 +6,27 @@
 
 .categorieslist_container
   text-align: left
-  margin: 25px 15px
+  margin-bottom: 25px
+  padding: 15px
   display: flex
   flex-wrap: wrap
   max-height: 20vh
   overflow: hidden
   overflow-y: scroll
+  background: $white-grey
+  border-top: 2px solid $light-grey
+  border-bottom: 2px solid $light-grey
 
 .categorieslist_input
   border: none
   margin: 10px 0 0 5px
   font-family: $font-sans-serif
-  font-weight: 500
+  font-weight: 600
   font-size: .9em
+  background: $white-grey
+
+  &::placeholder
+    font-weight: 300
 
 .categorieslist_tag
   background: $primary
