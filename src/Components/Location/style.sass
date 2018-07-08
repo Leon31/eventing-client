@@ -1,0 +1,23 @@
+@import '../../index.sass'
+
+[class |= location]
+  height: 12vh
+  background: $white-grey
+  border-top: 2px solid $light-grey
+  border-bottom: 2px solid $light-grey
+  display: flex
+  justify-content: center
+  align-items: center
+  color: $grey
+  font-weight: 300
+  cursor: pointer
+  transition: all ease 0.3s
+
+.location--visited
+  background: $primary
+  color: $white
+  transition: all ease 0.3s
+
+.location_span
+  margin-left: 8px
+  transform: rotate(-45deg)
