@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Unsplash, { toJson } from 'unsplash-js';
 import moment from 'moment';
+import {DotLoader} from 'react-spinners';
+
 
 import User from '../../Components/User';
 
@@ -19,8 +21,8 @@ class Event extends Component {
   }
 
   getEvent = () => {
-    let EventId = new URLSearchParams(location.search.substring(1)).get('EventId');
-    fetch(`https://cc0b5ae5.ngrok.io/event?EventId=${1}`)
+    let EventId = new URLSearchParams(location.search.substring(1)).get('eventId');
+    fetch(`https://4640fa73.ngrok.io/event?EventId=${EventId}`)
       .then((res) => res.json())
       .then((res)=> {
         console.log(res);
@@ -54,16 +56,26 @@ class Event extends Component {
     return (
       <div className="event">
         <div className="close_lable">Close here <span alt="hand" aria-label="hand">☝️</span> </div>
-        <div className="event_title">{category}</div>
-        <div className="event_picture_container">
-          <img src={picture} alt=""/>
+        {event ? <div>
+          <div className="event_title">{category}</div>
+          <div className="event_picture_container">
+            <img src={picture} alt=""/>
+          </div>
+          <div className="event_date">
+            <div className="event_status"></div>
+            On the {event ? moment(event.createdAt).add(2,'days').format('MMMM Do'): null}</div>
+          <div className="event_user_list">
+            {users ? users.map(user => <User key={user.id} user={user}/>) : null }
+          </div>
         </div>
-        <div className="event_date">
-          <div className="event_status"></div>
-          On the {event ? moment(event.createdAt).add(2,'days').format('MMMM Do'): null}</div>
-        <div className="event_user_list">
-          {users ? users.map(user => <User key={user.id} user={user}/>) : null }
-        </div>
+          : <div className="event_loading">
+            <DotLoader
+              color={'DodgerBlue'}
+              size={50}
+              loading={true}
+            />
+          </div>
+        }
       </div>
     );
   }

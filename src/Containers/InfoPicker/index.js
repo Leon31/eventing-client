@@ -63,7 +63,6 @@ class InfoPicker extends Component {
               <span role="img" alt="party" aria-label="party">🎉</span>
             </div>
             <div className="infoPicker_complete_message"> When I will find an event that matches with your data I will share it with you! 😉 </div>
-            <div className="submit">Restart</div>
           </div>
           : <div>
             <Location storeLocation={this.handleStore}/>

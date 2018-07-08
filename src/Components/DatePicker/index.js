@@ -32,13 +32,11 @@ class DatePicker extends Component {
       this.props.storeDates(dates, 'dates');
     });
   }
-  // moment().add(i,'days').format('YYYY-M-D')
-  // Object.keys(this.state.week).filter(day => this.state.week[day]);
 
   render() {
     return (
       <div>
-        <div className="title">Choose your free days.</div>
+        <div className="title">Select your free days.</div>
         <div className="datepicket">
           {_.range(7).map(i => {
             return(
